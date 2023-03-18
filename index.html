@@ -7,8 +7,30 @@
   <title>Contact List</title>
 </head>
 <body>
-  
-  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <div id="app">
+    <h1>Agenda de Contatos</h1>
 
+    <input type='text' v-model='searchText' placeholder='Buscar pessoa...'>
+
+    <!-- <button v-on:click='getData'>Carregar dados</button> -->
+
+    <div v-if='listResults.length <= 0'>
+      <h2>Nenhum contato encontrado</h2>
+    </div>
+
+    <ul class='cards'>
+      <li v-for='item, index in listResults' class='card'> 
+        <address>
+          <img v-bind:src="item.picture" alt="item.firstName">
+          <br />{{ item.firstName }} {{ item.lastName }}
+          <br />Email: {{ item.email }}
+          <br />Cidade: {{ item.city }}
+        </address>
+        <button v-on:click='removeContact(index)'>Excluir</button>
+      </li>
+    </ul>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
