@@ -4,13 +4,18 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="style.css">
+  
   <title>Contact List</title>
 </head>
 <body>
   <div id="app">
-    <h1>Agenda de Contatos</h1>
+    <h1>Contact List</h1>
 
-    <input type='text' v-model='searchText' placeholder='Buscar pessoa...'>
+    <input type='text' v-model='searchText' placeholder='Buscar pessoa...' class='form-control'>
 
     <!-- <button v-on:click='getData'>Carregar dados</button> -->
 
@@ -21,16 +26,23 @@
     <ul class='cards'>
       <li v-for='item, index in listResults' class='card'> 
         <address>
-          <img v-bind:src="item.picture" alt="item.firstName">
-          <br />{{ item.firstName }} {{ item.lastName }}
-          <br />Email: {{ item.email }}
-          <br />Cidade: {{ item.city }}
+          <img v-bind:src="item.picture" alt="item.firstName" class='card-img-top card__image'>
+          <div class="card-body">
+            <h4 class='card-title'>{{ item.firstName }} {{ item.lastName }}</h4>
+            <p class='card-text'>Email: {{ item.email }}</p>
+            <p class='card-text'>City: {{ item.city }}</p>  
+          </div>
         </address>
-        <button v-on:click='removeContact(index)'>Excluir</button>
+        <button v-on:click='removeContact(index)' class='btn btn-danger'>Delete</button>
       </li>
     </ul>
   </div>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script src="main.js"></script>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 </body>
 </html>
